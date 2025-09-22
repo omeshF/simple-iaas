@@ -1,0 +1,166 @@
+Infrastructure as a Service (IaaS) - Complete Guide
+==================================================
+
+DEFINITION:
+Infrastructure as a Service (IaaS) is a cloud computing service model that provides virtualized computing resources over the internet. IaaS is one of the three main categories of cloud computing services, alongside Software as a Service (SaaS) and Platform as a Service (PaaS).
+
+KEY CHARACTERISTICS:
+1. VIRTUALIZED RESOURCES
+   - Virtual machines (VMs)
+   - Virtual networks
+   - Virtual storage systems
+   - Load balancers and firewalls
+
+2. ON-DEMAND PROVISIONING
+   - Resources available instantly
+   - Self-service portal access
+   - Automated scaling capabilities
+   - Pay-per-use billing model
+
+3. INTERNET ACCESSIBILITY
+   - Resources accessed via web interfaces
+   - API-driven management
+   - Global availability and distribution
+   - High-speed network connectivity
+
+CORE COMPONENTS:
+• COMPUTE RESOURCES
+  - Virtual CPUs and memory
+  - Operating system choices
+  - Container orchestration
+  - Serverless computing options
+
+• STORAGE SERVICES
+  - Block storage (like traditional hard drives)
+  - Object storage (for files and media)
+  - File storage (shared file systems)
+  - Backup and archival services
+
+• NETWORKING
+  - Virtual private clouds (VPCs)
+  - Load balancers
+  - Content delivery networks (CDNs)
+  - VPN connections
+
+BENEFITS OF IaaS:
+1. COST EFFICIENCY
+   - No upfront hardware investment
+   - Operational expense model
+   - Reduced maintenance costs
+   - Economies of scale
+
+2. SCALABILITY & FLEXIBILITY
+   - Instant resource scaling
+   - Global deployment options
+   - Multiple OS and software choices
+   - Rapid provisioning and deprovisioning
+
+3. RELIABILITY & SECURITY
+   - Enterprise-grade infrastructure
+   - Built-in redundancy
+   - Professional security management
+   - Disaster recovery capabilities
+
+4. FOCUS ON CORE BUSINESS
+   - Reduced IT management overhead
+   - Faster time-to-market
+   - Innovation enablement
+   - Resource optimization
+
+POPULAR IaaS PROVIDERS:
+• Amazon Web Services (AWS)
+  - EC2 (Elastic Compute Cloud)
+  - S3 (Simple Storage Service)
+  - VPC (Virtual Private Cloud)
+
+• Microsoft Azure
+  - Virtual Machines
+  - Blob Storage
+  - Virtual Network
+
+• Google Cloud Platform (GCP)
+  - Compute Engine
+  - Cloud Storage
+  - Virtual Private Cloud
+
+• Other providers: IBM Cloud, Oracle Cloud, DigitalOcean, Linode
+
+USE CASES:
+1. WEB HOSTING & APPLICATIONS
+   - Scalable web servers
+   - Database hosting
+   - Content management systems
+   - E-commerce platforms
+
+2. DEVELOPMENT & TESTING
+   - Development environments
+   - CI/CD pipelines
+   - Load testing
+   - Staging environments
+
+3. BIG DATA & ANALYTICS
+   - Data processing clusters
+   - Machine learning platforms
+   - Data warehousing
+   - Real-time analytics
+
+4. DISASTER RECOVERY
+   - Backup infrastructure
+   - Business continuity planning
+   - Geographic redundancy
+   - Quick recovery capabilities
+
+IAAS vs OTHER CLOUD MODELS:
+• IaaS: You manage applications, data, runtime, middleware, and OS
+  Provider manages: Virtualization, servers, storage, networking
+
+• PaaS: You manage applications and data
+  Provider manages: Runtime, middleware, OS, and below
+
+• SaaS: Provider manages everything
+  You use: Complete applications via web interface
+
+SECURITY CONSIDERATIONS:
+- Shared responsibility model
+- Data encryption in transit and at rest
+- Network security groups and firewalls
+- Identity and access management
+- Compliance certifications
+- Regular security audits
+
+COST FACTORS:
+• Compute usage (CPU hours)
+• Storage consumption (GB/month)
+• Network transfer (GB transferred)
+• Additional services (load balancers, databases)
+• Reserved vs on-demand pricing
+• Geographic location of resources
+
+REAL-WORLD EXAMPLE:
+This very text file you're downloading demonstrates IaaS in action:
+- Hosted on cloud virtual servers
+- Stored in cloud storage systems
+- Delivered via cloud networking
+- Scalable based on demand
+- Accessible from anywhere globally
+
+LEARNING ACTIVITY:
+You've just experienced IaaS by downloading this file from a cloud-hosted server using network commands in Mininet. This demonstrates:
+- Cloud resource utilization
+- Network-based service delivery
+- On-demand content access
+- Infrastructure abstraction
+
+FOR FURTHER STUDY:
+- Explore AWS Free Tier
+- Practice with Docker containers
+- Learn about Kubernetes orchestration
+- Study cloud networking concepts
+- Understand cloud security models
+
+==================================================
+Generated: 2025-09-22T17:21:03.500Z
+Course: 7COM1076 -  Wireless Mobile and Cloud Networking 
+Demonstration: Infrastructure as a Service (IaaS) File Distribution
+Created by: Dr Omesh Anthony Fernando
+==================================================
