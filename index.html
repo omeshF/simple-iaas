@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IaaS Demo - Cloud File Server</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #e0e6ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .status {
+            background: rgba(46, 204, 113, 0.2);
+            border: 1px solid #2ecc71;
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .status-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: #2ecc71;
+            border-radius: 50%;
+            margin-right: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        .demo-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .demo-section h2 {
+            color: #fff;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .file-info {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #3498db;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 1rem 0;
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.3);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(52, 152, 219, 0.4);
+        }
+
+        .command-box {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            padding: 1.5rem;
+            font-family: 'Courier New', monospace;
+            border-left: 4px solid #e74c3c;
+            margin: 1rem 0;
+        }
+
+        .command-box h3 {
+            color: #e74c3c;
+            margin-bottom: 0.5rem;
+        }
+
+        .iaas-explanation {
+            background: linear-gradient(135deg, rgba(155, 89, 182, 0.2), rgba(142, 68, 173, 0.2));
+            border: 1px solid rgba(155, 89, 182, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .iaas-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏗️ IaaS Demonstration Server</h1>
+            <p>Infrastructure as a Service - Live Cloud File Distribution</p>
+        </div>
+
+        <div class="status">
+            <span class="status-dot"></span>
+            <strong>LIVE:</strong> This server is running on cloud infrastructure, demonstrating IaaS capabilities
+        </div>
+
+        <div class="demo-section">
+            <h2>📁 Available Files</h2>
+            <div class="file-info">
+                <h3>📄 iaas-explanation.txt</h3>
+                <p><strong>Size:</strong> ~2.5 KB | <strong>Type:</strong> Text Document</p>
+                <p><strong>Description:</strong> Comprehensive explanation of Infrastructure as a Service (IaaS) concepts, benefits, and real-world applications.</p>
+                <a href="#" class="download-btn" onclick="downloadFile()">⬇️ Download File</a>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>🖥️ Mininet Commands</h2>
+            <div class="command-box">
+                <h3>Download from Mininet:</h3>
+                <code>curl -O https://your-iaas-demo.onrender.com/iaas-explanation.txt</code>
+            </div>
+            <div class="command-box">
+                <h3>Alternative download method:</h3>
+                <code>wget https://your-iaas-demo.onrender.com/iaas-explanation.txt</code>
+            </div>
+            <div class="command-box">
+                <h3>View file contents directly:</h3>
+                <code>curl https://your-iaas-demo.onrender.com/iaas-explanation.txt</code>
+            </div>
+        </div>
+
+        <div class="iaas-explanation">
+            <h2>🌩️ What is IaaS?</h2>
+            <p>Infrastructure as a Service (IaaS) is a cloud computing model where virtualized computing resources are provided over the internet. This demonstration shows IaaS in action:</p>
+            
+            <div class="iaas-features">
+                <div class="feature-card">
+                    <span class="feature-icon">🖥️</span>
+                    <h3>Virtual Servers</h3>
+                    <p>This website runs on virtual server infrastructure</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">💾</span>
+                    <h3>Storage Services</h3>
+                    <p>Files are stored and served from cloud storage</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🌐</span>
+                    <h3>Network Resources</h3>
+                    <p>Global network distribution and load balancing</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">⚡</span>
+                    <h3>Scalability</h3>
+                    <p>Resources scale automatically based on demand</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>🎯 Learning Objectives</h2>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin: 0.5rem 0;">✅ Understand IaaS service delivery model</li>
+                <li style="margin: 0.5rem 0;">✅ Experience cloud-based file distribution</li>
+                <li style="margin: 0.5rem 0;">✅ Practice network commands in Mininet</li>
+                <li style="margin: 0.5rem 0;">✅ Observe real-time cloud infrastructure</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p>🎓 7COM1076 - Advanced Networking & Cloud Technologies</p>
+            <p style="margin-top: 0.5rem; opacity: 0.8;">Demonstrating Infrastructure as a Service (IaaS) concepts through live cloud deployment</p>
+        </div>
+    </div>
+
+    <script>
+        function downloadFile() {
+            const fileContent = `Infrastructure as a Service (IaaS) - Complete Guide
+==================================================
+
+DEFINITION:
+Infrastructure as a Service (IaaS) is a cloud computing service model that provides virtualized computing resources over the internet. IaaS is one of the three main categories of cloud computing services, alongside Software as a Service (SaaS) and Platform as a Service (PaaS).
+
+KEY CHARACTERISTICS:
+1. VIRTUALIZED RESOURCES
+   - Virtual machines (VMs)
+   - Virtual networks
+   - Virtual storage systems
+   - Load balancers and firewalls
+
+2. ON-DEMAND PROVISIONING
+   - Resources available instantly
+   - Self-service portal access
+   - Automated scaling capabilities
+   - Pay-per-use billing model
+
+3. INTERNET ACCESSIBILITY
+   - Resources accessed via web interfaces
+   - API-driven management
+   - Global availability and distribution
+   - High-speed network connectivity
+
+CORE COMPONENTS:
+• COMPUTE RESOURCES
+  - Virtual CPUs and memory
+  - Operating system choices
+  - Container orchestration
+  - Serverless computing options
+
+• STORAGE SERVICES
+  - Block storage (like traditional hard drives)
+  - Object storage (for files and media)
+  - File storage (shared file systems)
+  - Backup and archival services
+
+• NETWORKING
+  - Virtual private clouds (VPCs)
+  - Load balancers
+  - Content delivery networks (CDNs)
+  - VPN connections
+
+BENEFITS OF IaaS:
+1. COST EFFICIENCY
+   - No upfront hardware investment
+   - Operational expense model
+   - Reduced maintenance costs
+   - Economies of scale
+
+2. SCALABILITY & FLEXIBILITY
+   - Instant resource scaling
+   - Global deployment options
+   - Multiple OS and software choices
+   - Rapid provisioning and deprovisioning
+
+3. RELIABILITY & SECURITY
+   - Enterprise-grade infrastructure
+   - Built-in redundancy
+   - Professional security management
+   - Disaster recovery capabilities
+
+4. FOCUS ON CORE BUSINESS
+   - Reduced IT management overhead
+   - Faster time-to-market
+   - Innovation enablement
+   - Resource optimization
+
+POPULAR IaaS PROVIDERS:
+• Amazon Web Services (AWS)
+  - EC2 (Elastic Compute Cloud)
+  - S3 (Simple Storage Service)
+  - VPC (Virtual Private Cloud)
+
+• Microsoft Azure
+  - Virtual Machines
+  - Blob Storage
+  - Virtual Network
+
+• Google Cloud Platform (GCP)
+  - Compute Engine
+  - Cloud Storage
+  - Virtual Private Cloud
+
+• Other providers: IBM Cloud, Oracle Cloud, DigitalOcean, Linode
+
+USE CASES:
+1. WEB HOSTING & APPLICATIONS
+   - Scalable web servers
+   - Database hosting
+   - Content management systems
+   - E-commerce platforms
+
+2. DEVELOPMENT & TESTING
+   - Development environments
+   - CI/CD pipelines
+   - Load testing
+   - Staging environments
+
+3. BIG DATA & ANALYTICS
+   - Data processing clusters
+   - Machine learning platforms
+   - Data warehousing
+   - Real-time analytics
+
+4. DISASTER RECOVERY
+   - Backup infrastructure
+   - Business continuity planning
+   - Geographic redundancy
+   - Quick recovery capabilities
+
+IAAS vs OTHER CLOUD MODELS:
+• IaaS: You manage applications, data, runtime, middleware, and OS
+  Provider manages: Virtualization, servers, storage, networking
+
+• PaaS: You manage applications and data
+  Provider manages: Runtime, middleware, OS, and below
+
+• SaaS: Provider manages everything
+  You use: Complete applications via web interface
+
+SECURITY CONSIDERATIONS:
+- Shared responsibility model
+- Data encryption in transit and at rest
+- Network security groups and firewalls
+- Identity and access management
+- Compliance certifications
+- Regular security audits
+
+COST FACTORS:
+• Compute usage (CPU hours)
+• Storage consumption (GB/month)
+• Network transfer (GB transferred)
+• Additional services (load balancers, databases)
+• Reserved vs on-demand pricing
+• Geographic location of resources
+
+REAL-WORLD EXAMPLE:
+This very text file you're downloading demonstrates IaaS in action:
+- Hosted on cloud virtual servers
+- Stored in cloud storage systems
+- Delivered via cloud networking
+- Scalable based on demand
+- Accessible from anywhere globally
+
+LEARNING ACTIVITY:
+You've just experienced IaaS by downloading this file from a cloud-hosted server using network commands in Mininet. This demonstrates:
+- Cloud resource utilization
+- Network-based service delivery
+- On-demand content access
+- Infrastructure abstraction
+
+FOR FURTHER STUDY:
+- Explore AWS Free Tier
+- Practice with Docker containers
+- Learn about Kubernetes orchestration
+- Study cloud networking concepts
+- Understand cloud security models
+
+==================================================
+Generated: ${new Date().toISOString()}
+Course: 7COM1076 -  Wireless Mobile and Cloud Networking 
+Demonstration: Infrastructure as a Service (IaaS) File Distribution
+Created by: Dr Omesh Anthony Fernando
+==================================================`;
+
+            const blob = new Blob([fileContent], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = 'iaas-explanation.txt';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+            
+            // Show download confirmation
+            showDownloadConfirmation();
+        }
+
+        function showDownloadConfirmation() {
+            const confirmation = document.createElement('div');
+            confirmation.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(45deg, #2ecc71, #27ae60);
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                z-index: 1000;
+                animation: slideIn 0.3s ease-out;
+            `;
+            confirmation.innerHTML = '✅ File downloaded successfully!';
+            document.body.appendChild(confirmation);
+            
+            setTimeout(() => {
+                confirmation.style.animation = 'slideOut 0.3s ease-in';
+                setTimeout(() => {
+                    document.body.removeChild(confirmation);
+                }, 300);
+            }, 3000);
+        }
+
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Simulate server status updates
+        setInterval(() => {
+            const dots = document.querySelectorAll('.status-dot');
+            dots.forEach(dot => {
+                dot.style.background = dot.style.background === 'rgb(46, 204, 113)' ? '#3498db' : '#2ecc71';
+            });
+        }, 3000);
+    </script>
+</body>
+</html>
